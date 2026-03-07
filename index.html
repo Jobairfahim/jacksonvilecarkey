@@ -13,8 +13,8 @@
     --navy: #1B3A6B;
     --navy-dark: #122952;
     --navy-deep: #0D1F3C;
-    --orange: #E8620A;
-    --orange-light: #F47C35;
+    --orange: #d32518;
+    --orange-light: #DC2626;
     --orange-pale: #FFF3EB;
     --bg: #F7F8FC;
     --bg2: #FFFFFF;
@@ -73,13 +73,15 @@
     padding: 0 20px; height: 68px;
   }
   .nav-logo { display: flex; align-items: center; gap: 10px; }
-  .nav-logo .logo-icon {
-    width: 38px; height: 38px;
-    background: linear-gradient(135deg, var(--orange), var(--orange-light));
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(232,98,10,0.3);
+  .nav-logo .logo-img {
+    height: 40px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+  }
+  .nav-logo:hover .logo-img {
+    opacity: 0.8;
   }
   .nav-logo-text { display: flex; flex-direction: column; }
   .nav-logo-text strong {
@@ -736,11 +738,14 @@
     border-radius: 12px; overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
     box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    height: 200px;
+    max-width: 400px;
+    margin: 0 auto;
   }
-  .footer-map-wrap iframe { display: block; width: 100%; height: 300px; border: none; }
+  .footer-map-wrap iframe { display: block; width: 100%; height: 200px; border: none; }
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 12px;
   }
   .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
 
@@ -795,11 +800,7 @@
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a class="nav-logo" href="#home" aria-label="Car Key Locksmith Jacksonville Home">
-      <div class="logo-icon" aria-hidden="true">🔑</div>
-      <div class="nav-logo-text">
-        <strong>Car Key Locksmith</strong>
-        <span>Jacksonville, FL</span>
-      </div>
+      <img src="assets/images/logo.webp" alt="Car Key Locksmith Jacksonville Logo" class="logo-img">
     </a>
     <ul class="nav-links">
       <li><a href="#home" class="active">Home</a></li>
@@ -1938,17 +1939,13 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="nav-logo" style="margin-bottom:0">
-          <div class="logo-icon" aria-hidden="true">🔑</div>
-          <div class="nav-logo-text">
-            <strong>Car Key Locksmith</strong>
-            <span>Jacksonville, FL</span>
-          </div>
+        <div class="nav-logo" style="margin-bottom:24px;text-align:left;">
+          <img src="assets/images/logo.webp" alt="Car Key Locksmith Jacksonville Logo" class="logo-img">
         </div>
-        <p>Professional mobile locksmith service in Jacksonville, FL. Car key replacement, emergency lockouts, residential and commercial lock service. We come to you — 24/7.</p>
-        <div class="footer-phone">
+        <p style="color:#fff;text-align:left;margin-bottom:20px;line-height:1.6;">Professional mobile locksmith service in Jacksonville, FL. Car key replacement, emergency lockouts, residential and commercial lock service. We come to you — 24/7.</p>
+        <div class="footer-phone" style="text-align:left;margin-bottom:24px;">
           <span>📞</span>
-          <a href="tel:9047208253">(904) 720-8253</a>
+          <a href="tel:9047208253" style="color:#fff;font-size:16px;font-weight:600;">(904) 720-8253</a>
         </div>
       </div>
       <div class="footer-col">
@@ -1973,8 +1970,8 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact Info</h4>
-        <ul>
+        <h4 style="text-align:center;">Contact Info</h4>
+        <ul style="text-align:center;">
           <li><a href="tel:9047208253">(904) 720-8253</a></li>
           <li><a href="https://carkeylocksmithjacksonville.com" target="_blank" rel="noopener noreferrer">Visit Our Website</a></li>
           <li style="color:var(--muted);font-size:13px">Jacksonville, FL 32246</li>
@@ -1984,12 +1981,9 @@
       </div>
     </div>
     <div class="footer-map-section">
-      <div class="footer-map-header">
-        <span>📍</span>
-        <h4>Our Service Location — Jacksonville, FL</h4>
-      </div>
-      <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:14px">11221 Stanley Steamer Ln, Jacksonville, FL 32246 · Mobile service within 60-mile radius</p>
-      <div class="footer-map-wrap">
+
+      <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:14px;text-align:center;">11221 Stanley Steamer Ln, Jacksonville, FL 32246 · Mobile service within 60-mile radius</p>
+      <div class="footer-map-wrap" style="margin:0 auto;">
         <iframe
           src="https://maps.google.com/maps?q=11221+Stanley+Steamer+Ln,+Jacksonville,+FL+32246&t=&z=15&ie=UTF8&iwloc=&output=embed"
           width="100%"
@@ -2003,7 +1997,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Car Key Locksmith Jacksonville. All rights reserved.</p>
+      <p style="text-align:center;">© 2026 Car Key Locksmith Jacksonville. All rights reserved.</p>
     </div>
   </div>
 </footer>
