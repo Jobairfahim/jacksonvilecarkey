@@ -561,7 +561,6 @@
     display: flex; align-items: flex-start; gap: 16px;
     transition: all var(--transition); box-shadow: var(--shadow);
   }
-  .ci-item:hover { border-color: rgba(232,98,10,0.3); box-shadow: var(--shadow-md); }
   .ci-icon {
     width: 44px; height: 44px; flex-shrink: 0; border-radius: 10px;
     background: var(--orange-pale); border: 1px solid rgba(232,98,10,0.2);
@@ -589,6 +588,120 @@
   }
   .form-group textarea { resize: vertical; min-height: 110px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* ===== SERVICE AREA ===== */
+  .service-area-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .area-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .area-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), var(--orange-light));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  .area-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    border-color: rgba(232,98,10,0.2);
+  }
+  .area-card:hover::before {
+    transform: scaleX(1);
+  }
+  .area-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+  .area-card h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy-deep);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .area-card p {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .service-coverage {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 600px;
+    margin: 40px auto 0;
+    text-align: center;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .service-coverage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(232,98,10,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .service-coverage h4 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--navy-deep);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .service-coverage p {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .coverage-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .coverage-stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--text2);
+    font-weight: 500;
+  }
+  .coverage-stat span {
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 18px;
+  }
 
   /* ===== FOOTER ===== */
   footer {
@@ -630,7 +743,6 @@
     display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
   }
   .footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.4); }
-  .footer-bottom a { color: var(--orange-light); }
 
   /* ===== BACK TO TOP ===== */
   #btt {
@@ -701,6 +813,7 @@
           <li role="none"><a href="#emergency" role="menuitem"><span class="dd-icon">🚨</span>Emergency Locksmith</a></li>
         </ul>
       </li>
+      <li><a href="#service-area">Service Area</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact Us</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -725,6 +838,7 @@
       <li><a href="#keypad" class="mobile-link">🔢 Keypad Lock Installation</a></li>
       <li><a href="#emergency" class="mobile-link">🚨 Emergency Locksmith</a></li>
     </ul>
+    <li><a href="#service-area" class="mobile-link">Service Area</a></li>
     <li><a href="#about" class="mobile-link">About</a></li>
     <li><a href="#contact" class="mobile-link">Contact Us</a></li>
     <li><a href="#faq" class="mobile-link">FAQ</a></li>
@@ -741,11 +855,12 @@
     <div class="hero-content">
       <div class="hero-badge">Available 24/7 — Jacksonville, FL</div>
       <h1 class="hero-title">
-        Mobile Locksmith<br>
-        <span class="accent">Jacksonville</span><br>
-        & Car Key Replacement
+        Mobile Locksmith Jacksonville &<br>
+        <span class="accent">Car Key Replacement</span> – Fast Local Service
       </h1>
-      <p class="hero-sub">Fast, professional mobile locksmith service across Jacksonville, FL and surrounding areas. We come directly to your location — no towing, no dealership delays.</p>
+      <p class="hero-sub">Welcome to Car Key Locksmith Jacksonville, your trusted mobile locksmith providing fast and professional service across Jacksonville, FL and surrounding areas.</p>
+      <p class="hero-sub" style="margin-top:8px">We specialize in car key replacement, automotive locksmith service, and mobile lock repair for vehicles, homes, and businesses. Our technicians come directly to your location with the tools needed to complete the job on-site, saving you time and avoiding expensive dealership or towing costs.</p>
+      <p class="hero-sub" style="margin-top:8px">Whether you need new car keys, emergency lockout help, or a mobile locksmith near you, we are ready to respond quickly and professionally.</p>
       <div class="hero-actions">
         <a href="tel:9047208253" class="btn-primary">📞 Call (904) 720-8253</a>
         <a href="#services" class="btn-secondary">Our Services ↓</a>
@@ -823,6 +938,94 @@
     <div class="section-label">What We Do</div>
     <h2 class="section-title" id="services-title">Complete Locksmith <span class="accent">Services</span></h2>
     <p class="section-sub">From lost car keys to commercial security upgrades — we handle it all on-site with professional mobile service.</p>
+    
+    <!-- FULL MOBILE LOCKSMITH SERVICE -->
+    <div style="margin:50px 0;padding:40px;background:var(--bg3);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow)">
+      <div style="text-align:center;margin-bottom:30px">
+        <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Full Mobile Locksmith Service for Car, Home & Business</h3>
+        <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto">In addition to car key service, we also provide mobile locksmith solutions for residential and commercial customers.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:900px;margin:0 auto 30px">
+        <div style="display:flex; align-items:center; gap:10px;color:var(--text2); font-size:14px">
+          <span style="color:var(--orange); font-size:18px">🏠</span>
+          <span>Home lockout service</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;color:var(--text2); font-size:14px">
+          <span style="color:var(--orange); font-size:18px">🔄</span>
+          <span>Lock rekey</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;color:var(--text2); font-size:14px">
+          <span style="color:var(--orange); font-size:18px">🔧</span>
+          <span>Lock repair and replacement</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;color:var(--text2); font-size:14px">
+          <span style="color:var(--orange); font-size:18px">🔒</span>
+          <span>Deadbolt installation</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;color:var(--text2); font-size:14px">
+          <span style="color:var(--orange); font-size:18px">🏢</span>
+          <span>Business lock service</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;color:var(--text2); font-size:14px">
+          <span style="color:var(--orange); font-size:18px">🚨</span>
+          <span>Emergency locksmith service</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;color:var(--text2); font-size:14px">
+          <span style="color:var(--orange); font-size:18px">🔢</span>
+          <span>Keypad lock installation</span>
+        </div>
+      </div>
+      <p style="color:var(--orange);font-size:16px;font-weight:700;text-align:center">We come to your location with everything needed to complete work on-site.</p>
+    </div>
+
+    <!-- SERVING JACKSONVILLE -->
+    <div style="margin:50px 0;text-align:center">
+      <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Serving Jacksonville and Surrounding Areas</h3>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">We provide mobile locksmith service across Jacksonville and nearby communities within driving distance.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Whether you need car key replacement, emergency locksmith service, or lock repair, our team is ready to help.</p>
+      <p style="color:var(--orange);font-size:16px;font-weight:700">Mobile Locksmith Jacksonville and Car Key Replacement is committed to fast service, professional work, and reliable results.</p>
+    </div>
+
+    <!-- CALL TODAY -->
+    <div style="margin:50px 0;padding:40px;background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:16px;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 30% 50%, rgba(232,98,10,0.1) 0%, transparent 60%)" aria-hidden="true"></div>
+      <div style="position:relative;z-index:2;text-align:center">
+        <h3 style="font-size:28px;font-weight:800;color:#fff;margin-bottom:20px">Call Today for Mobile Locksmith Service in Jacksonville</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:700px;margin:0 auto 30px">
+          <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,0.2)">
+            <div style="font-size:24px;margin-bottom:10px">🔑</div>
+            <h4 style="color:#fff;font-size:18px;font-weight:700;margin-bottom:8px">Need car key replacement?</h4>
+          </div>
+          <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,0.2)">
+            <div style="font-size:24px;margin-bottom:10px">🔓</div>
+            <h4 style="color:#fff;font-size:18px;font-weight:700;margin-bottom:8px">Locked out?</h4>
+          </div>
+          <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:20px;border:1px solid rgba(255,255,255,0.2)">
+            <div style="font-size:24px;margin-bottom:10px">🚗</div>
+            <h4 style="color:#fff;font-size:18px;font-weight:700;margin-bottom:8px">Need a mobile locksmith near you?</h4>
+          </div>
+        </div>
+        <p style="color:var(--orange-light);font-size:18px;font-weight:700;margin-bottom:20px">Car Key Locksmith Jacksonville is ready to help.</p>
+        <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.8);font-size:14px">
+            <span style="color:var(--orange-light);font-weight:700">⚡</span>
+            <span>Fast response</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.8);font-size:14px">
+            <span style="color:var(--orange-light);font-weight:700">🚗</span>
+            <span>Mobile service</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.8);font-size:14px">
+            <span style="color:var(--orange-light);font-weight:700">✨</span>
+            <span>Professional results</span>
+          </div>
+        </div>
+        <div style="margin-top:30px">
+          <a href="tel:9047208253" class="btn-primary" style="background:var(--orange);color:#fff;font-size:18px;padding:16px 32px">📞 Call now for service in Jacksonville, FL</a>
+        </div>
+      </div>
+    </div>
+
     <div class="services-grid">
       <article class="service-block">
         <div class="sb-icon">🚗</div>
@@ -912,12 +1115,100 @@
   </div>
 </section>
 
+<!-- SERVICE AREA -->
+<section id="service-area" aria-labelledby="service-area-title">
+  <div class="container">
+    <div class="section-label">Service Area</div>
+    <h2 class="section-title" id="service-area-title">Serving <span class="accent">Jacksonville</span> & Surrounding Areas</h2>
+    <p class="section-sub">We provide mobile locksmith service across Jacksonville, FL and surrounding communities within a 60-mile radius.</p>
+    
+    <div style="margin:50px 0">
+      <div style="text-align:center;margin-bottom:40px">
+        <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Areas We Serve</h3>
+        <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Our mobile locksmith service covers Jacksonville and the following surrounding areas. Whether you need car key replacement, emergency locksmith service, or lock repair, our team is ready to help.</p>
+      </div>
+      
+      <div class="service-area-grid">
+        <div class="area-card">
+          <div class="area-icon">📍</div>
+          <h4>Jacksonville</h4>
+          <p>Downtown, Southside, Westside, Northside, Arlington, Mandarin, Beaches</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">🏖️</div>
+          <h4>Orange Park</h4>
+          <p>Full-service mobile locksmith available</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">🏝️</div>
+          <h4>Fleming Island</h4>
+          <p>Emergency and scheduled locksmith service</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">🌊</div>
+          <h4>Neptune Beach</h4>
+          <p>Beachside locksmith service available</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">🏘️</div>
+          <h4>Ponte Vedra</h4>
+          <p>Premium locksmith service for residents</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">🏖️</div>
+          <h4>Green Cove Springs</h4>
+          <p>Reliable mobile locksmith service</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">🌳</div>
+          <h4>Middleburg</h4>
+          <p>Fast response for locksmith needs</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">🏖️</div>
+          <h4>Fruit Cove</h4>
+          <p>Professional locksmith solutions</p>
+        </div>
+      </div>
+      
+      <div class="service-coverage">
+        <h4>Service Coverage</h4>
+        <p>Our 60-mile service radius covers most of Duval County and surrounding areas. We provide fast, professional mobile locksmith service to all locations within our coverage area.</p>
+        <div class="coverage-stats">
+          <div class="coverage-stat">
+            <span>🚗</span>
+            <span>20-40 min response</span>
+          </div>
+          <div class="coverage-stat">
+            <span>📍</span>
+            <span>60 mile radius</span>
+          </div>
+          <div class="coverage-stat">
+            <span>🕐</span>
+            <span>24/7 service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- AUTOMOTIVE DETAIL -->
 <section id="automotive" aria-labelledby="auto-title">
   <div class="container">
     <div class="section-label">Automotive Locksmith</div>
-    <h2 class="section-title" id="auto-title">Car Key Replacement & <span class="accent">Programming</span></h2>
-    <p class="section-sub">Modern vehicles require advanced equipment to replace keys correctly. Our mobile automotive locksmith service completes most jobs in one on-site visit.</p>
+    <h2 class="section-title" id="auto-title">Automotive Locksmith & Car Key Replacement in <span class="accent">Jacksonville, FL</span></h2>
+    <p class="section-sub">Car Key Locksmith Jacksonville provides professional automotive locksmith service in Jacksonville, FL, including car key replacement, key programming, ignition repair, and mobile locksmith service for most vehicle makes and models.</p>
+    
+    <!-- MOBILE AUTOMOTIVE SERVICE -->
+    <div style="margin:50px 0;text-align:center">
+      <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Mobile Automotive Locksmith Service</h3>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Our mobile automotive locksmith service comes directly to your location with the equipment needed to complete most car key and ignition problems on-site.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">We can cut keys, program transponder keys, program smart keys, replace key fobs, repair ignitions, and remove broken keys without towing your vehicle to a dealership.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Mobile service is faster, more convenient, and often less expensive than dealership service.</p>
+      <p style="color:var(--orange);font-size:16px;font-weight:700">Car Key Locksmith Jacksonville provides mobile automotive locksmith service for cars, trucks, vans, and SUVs.</p>
+    </div>
+
     <div class="auto-grid">
       <div class="auto-feature-list">
         <div class="auto-feature">
@@ -952,7 +1243,7 @@
           <div class="af-icon">⚠️</div>
           <div>
             <h4>Key Not Detected / Key Not Working</h4>
-            <p>Sometimes the key is not lost, but the vehicle doesn't recognize it. We diagnose and fix: key not detected, remote not working, key not turning, programming problems, immobilizer issues, and damaged key chips. We diagnose the system and program new keys when needed.</p>
+            <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px; margin:0 auto 30px;text-align: center">Modern vehicles require advanced programming equipment to replace keys correctly. We specialize in automotive locksmith services and can cut and program new keys for most makes and models.</p>
           </div>
         </div>
         <div class="auto-feature">
@@ -1007,6 +1298,15 @@
         </div>
       </div>
     </div>
+
+    <!-- PROFESSIONAL AUTOMOTIVE SERVICE -->
+    <div style="margin:50px 0;text-align:center">
+      <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Professional Automotive Locksmith Service</h3>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Automotive locksmith work requires proper tools, correct installation, and experience with different vehicle security systems.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Our technicians work with automotive locks and keys every day and understand how to diagnose problems, program keys correctly, and complete repairs safely.</p>
+      <p style="color:var(--orange);font-size:16px;font-weight:700">Car Key Locksmith Jacksonville provides dependable automotive locksmith service for drivers who need fast response, professional work, and reliable key solutions.</p>
+
+    </div>
   </div>
 </section>
 
@@ -1014,8 +1314,18 @@
 <section id="residential" aria-labelledby="res-title">
   <div class="container">
     <div class="section-label">Residential Locksmith</div>
-    <h2 class="section-title" id="res-title">Home Lock Service <span class="accent">Jacksonville</span></h2>
-    <p class="section-sub">Professional residential locksmith service for homeowners — lock repair, replacement, rekey, and emergency lockout assistance. Fully mobile, all tools on-site.</p>
+    <h2 class="section-title" id="res-title">Residential Locksmith Service in Jacksonville, FL – Mobile Home Lock Repair & <span class="accent">Installation</span></h2>
+    <p class="section-sub">Mobile Locksmith Jacksonville and Car Key Replacement provides professional residential locksmith service in Jacksonville, FL, helping homeowners with lock repair, lock replacement, rekey service, and emergency house lockout situations.</p>
+    
+    <!-- MOBILE RESIDENTIAL SERVICE -->
+    <div style="margin:50px 0;text-align:center">
+      <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Mobile Residential Locksmith Service</h3>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Our mobile residential locksmith service brings all tools and supplies directly to your home, allowing us to complete most lock jobs in one visit without delays.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">We can repair locks, replace locks, rekey locks, install deadbolts, extract broken keys, and help with emergency house lockouts on-site.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Mobile service is convenient for homeowners because you don't need to remove locks and bring them to a shop — we work on the door at your location.</p>
+      <p style="color:var(--orange);font-size:16px;font-weight:700">Mobile Locksmith Jacksonville and Car Key Replacement provides residential locksmith service for houses, apartments, condos, and rental properties.</p>
+    </div>
+
     <div class="two-col">
       <div>
         <div class="service-list-box">
@@ -1031,8 +1341,8 @@
           <div class="sli"><span class="sli-icon">🔢</span>Keypad Lock Installation</div>
         </div>
         <div style="margin-top:20px;padding:22px;background:var(--bg2);border-radius:12px;border:1px solid rgba(232,98,10,0.15);box-shadow:var(--shadow)">
-          <h4 style="font-size:20px;font-weight:800;color:var(--navy-deep);margin-bottom:10px;">Can We Rekey All Locks to One Key?</h4>
-          <p style="font-size:14px;color:var(--muted);line-height:1.7;">Yes. In most cases we can rekey multiple locks so one key works for all doors in your home. Most residential jobs take 30–60 minutes depending on the number of locks and type of work.</p>
+          <h4 style="font-size:20px;font-weight:800;color:var(--navy-deep);margin-bottom:10px">Can We Rekey All Locks to One Key?</h4>
+          <p style="font-size:14px;color:var(--muted);line-height:1.7">Yes. In most cases we can rekey multiple locks so one key works for all doors in your home. Most residential jobs take 30–60 minutes depending on the number of locks and type of work.</p>
         </div>
       </div>
       <div class="info-blocks">
@@ -1058,6 +1368,14 @@
         </div>
       </div>
     </div>
+
+    <!-- PROFESSIONAL RESIDENTIAL SERVICE -->
+    <div style="margin:50px 0;text-align:center">
+      <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Professional Residential Locksmith Service</h3>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Residential locksmith work requires proper tools, correct installation, and experience with different lock types and door systems.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Our technicians work with home locks every day and understand how to repair, replace, and install hardware safely and correctly.</p>
+      <p style="color:var(--orange);font-size:16px;font-weight:700">Mobile Locksmith Jacksonville and Car Key Replacement provides dependable residential locksmith service for homeowners who need fast response, professional work, and reliable security solutions.</p>
+    </div>
   </div>
 </section>
 
@@ -1065,8 +1383,18 @@
 <section id="commercial" aria-labelledby="com-title">
   <div class="container">
     <div class="section-label">Commercial Locksmith</div>
-    <h2 class="section-title" id="com-title">Business Lock <span class="accent">Security</span></h2>
-    <p class="section-sub">Professional commercial locksmith services for offices, retail stores, warehouses, rental properties, and industrial buildings of all sizes.</p>
+    <h2 class="section-title" id="com-title">Commercial Locksmith Services in Jacksonville, FL – Mobile Business Lock <span class="accent">Service</span></h2>
+    <p class="section-sub">Mobile Locksmith Jacksonville and Car Key Replacement provides professional commercial locksmith services in Jacksonville, FL, including lock repair, lock replacement, rekey service, commercial door hardware installation, and security upgrades for businesses of all sizes.</p>
+    
+    <!-- MOBILE COMMERCIAL SERVICE -->
+    <div style="margin:50px 0;text-align:center">
+      <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Mobile Commercial Locksmith Service</h3>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Our mobile commercial locksmith service brings all necessary tools and hardware directly to your business location, allowing us to complete most commercial lock jobs on-site without disrupting operations.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">We can repair commercial locks, replace business locks, rekey commercial locks, install panic bars, set up master key systems, and help with emergency business lockouts at your location.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Mobile service is convenient for businesses because you don't need to remove locks or close operations — we work on-site during business hours or after hours as needed.</p>
+      <p style="color:var(--orange);font-size:16px;font-weight:700">Mobile Locksmith Jacksonville and Car Key Replacement provides commercial locksmith service for offices, retail stores, warehouses, apartment buildings, and industrial facilities.</p>
+    </div>
+
     <div class="two-col">
       <div class="info-blocks">
         <div class="info-block">
@@ -1107,12 +1435,20 @@
         </div>
         <div style="margin-top:16px;padding:20px;background:var(--bg);border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)">
           <h4 style="font-size:17px;font-weight:800;color:var(--navy-deep);margin-bottom:10px">Commercial Door Hardware Repair & Installation</h4>
-          <p style="font-size:14px;color:var(--muted);line-height:1.7;">Many lock problems are caused by worn door hardware, not the lock itself. Proper alignment is important for security and smooth operation. We repair and install door closers, strike plates, lock cylinders, door handles, hinges, latch mechanisms, and reinforced hardware. Correct installation helps doors lock properly and prevents damage.</p>
+          <p style="font-size:14px;color:var(--muted);line-height:1.7">Many lock problems are caused by worn door hardware, not the lock itself. Proper alignment is important for security and smooth operation. We repair and install door closers, strike plates, lock cylinders, door handles, hinges, latch mechanisms, and reinforced hardware. Correct installation helps doors lock properly and prevents damage.</p>
         </div>
         <div style="margin-top:16px;padding:22px;background:rgba(245,166,35,0.06);border-radius:12px;border:1px solid rgba(245,166,35,0.2)">
-          <p style="font-size:14px;color:var(--text2);line-height:1.7;"><strong style="color:var(--orange)">Commercial Lock Maintenance</strong> — Regular service helps prevent lock failure, keys breaking, door alignment problems, loose hardware, and sticking locks. Maintenance keeps locks working smoothly and extends hardware life.</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.7"><strong style="color:var(--orange)">Commercial Lock Maintenance</strong> — Regular service helps prevent lock failure, keys breaking, door alignment problems, loose hardware, and sticking locks. Maintenance keeps locks working smoothly and extends hardware life.</p>
         </div>
       </div>
+    </div>
+
+    <!-- PROFESSIONAL COMMERCIAL SERVICE -->
+    <div style="margin:50px 0;text-align:center">
+      <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px; text-align: center">Professional Commercial Locksmith Service</h3>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px; margin:0 auto 20px">Commercial locksmith work requires proper tools, correct installation, and experience with different lock types and door systems.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px; margin:0 auto 20px">Our technicians work with commercial locks every day and understand how to repair, replace, and install hardware safely.</p>
+      <p style="color:var(--orange);font-size:16px;font-weight:700">Mobile Locksmith Jacksonville and Car Key Replacement provides dependable commercial locksmith service for businesses that need fast response, professional work, and reliable security.</p>
     </div>
   </div>
 </section>
@@ -1121,8 +1457,18 @@
 <section id="keypad" aria-labelledby="keypad-title">
   <div class="container">
     <div class="section-label">Keypad Lock Installation</div>
-    <h2 class="section-title" id="keypad-title">Keyless Entry <span class="accent">Solutions</span></h2>
-    <p class="section-sub">Professional keypad lock installation for residential and commercial properties in Jacksonville, FL. We install, repair, and program keypad locks, smart locks, and keyless entry systems.</p>
+    <h2 class="section-title" id="keypad-title">Keypad Lock Installation in Jacksonville, FL – Keyless Entry <span class="accent">Solutions</span></h2>
+    <p class="section-sub">Mobile Locksmith Jacksonville and Car Key Replacement provides professional keypad lock installation service in Jacksonville, FL, including keypad locks, smart locks, and keyless entry systems for homes and businesses.</p>
+    
+    <!-- MOBILE KEYPAD SERVICE -->
+    <div style="margin:50px 0;text-align:center">
+      <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Mobile Keypad Lock Installation Service</h3>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Our mobile keypad lock installation service brings all necessary tools and hardware directly to your location, allowing us to complete most keypad lock installations in one visit.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">We can install keypad locks on front doors, back doors, garage entry doors, rental properties, and business entrances. We also program codes, repair existing keypad locks, and upgrade old locks to modern keyless systems.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Mobile installation is convenient because you don't need to remove doors or bring hardware to a shop — we install and program everything on-site.</p>
+      <p style="color:var(--orange);font-size:16px;font-weight:700">Mobile Locksmith Jacksonville and Car Key Replacement provides keypad lock installation for homeowners, landlords, and businesses in Jacksonville, FL.</p>
+    </div>
+
     <div class="keypad-grid">
       <div class="keypad-card">
         <div class="kc-icon">🏠</div>
@@ -1155,9 +1501,13 @@
         <p>Keypad locks are very popular for rental homes because codes can be changed easily between tenants or guests. We install outdoor-rated keypad locks designed to handle heat, humidity, and rain.</p>
       </div>
     </div>
-    <div style="margin-top:28px;padding:26px;background:var(--bg2);border-radius:14px;border:1px solid var(--border);box-shadow:var(--shadow);max-width:700px">
-      <h3 style="font-size:22px;font-weight:800;color:var(--navy-deep);margin-bottom:10px;">Why Use a Locksmith for Installation?</h3>
-      <p style="font-size:14px;color:var(--muted);line-height:1.7;">Professional installation ensures the lock is aligned correctly, secure, and working smoothly. Our technicians make sure the lock fits the door correctly, hardware is installed securely, the code system works properly, the door closes and locks smoothly, and security is not compromised. Most installations take 30–60 minutes and can be completed in one visit.</p>
+    
+    <!-- PROFESSIONAL KEYPAD SERVICE -->
+    <div style="margin:50px 0;text-align:center">
+      <h3 style="font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:16px">Professional Keypad Lock Installation</h3>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Keypad lock installation requires proper tools, correct installation, and experience with electronic lock systems.</p>
+      <p style="font-size:16px;color:var(--text2);line-height:1.7;max-width:800px;margin:0 auto 20px">Our technicians work with keypad and smart locks every day and understand how to install, program, and repair keyless entry systems correctly.</p>
+      <p style="color:var(--orange);font-size:16px;font-weight:700">Mobile Locksmith Jacksonville and Car Key Replacement provides dependable keypad lock installation for customers who want modern keyless access with professional installation.</p>
     </div>
   </div>
 </section>
@@ -1169,10 +1519,19 @@
       <div class="emerg-text">
         <div class="emerg-24" aria-hidden="true">24/7</div>
         <div class="section-label">Emergency Service</div>
-        <h2 class="section-title" id="emerg-title">Emergency Locksmith <span class="accent">Jacksonville</span></h2>
-        <p class="section-sub">Lock and key problems don't happen on schedule. Our emergency locksmith service is available day and night — including nights, weekends, and holidays.</p>
+        <h2 class="section-title" id="emerg-title">Emergency Locksmith Service in Jacksonville, FL – <span class="accent">24/7</span></h2>
+        <p class="section-sub">Mobile Locksmith Jacksonville and Car Key Replacement provides emergency locksmith service in Jacksonville, FL, available 24 hours a day for urgent lock and key problems.</p>
+        
+        <!-- EMERGENCY SERVICE DETAILS -->
+        <div style="margin:40px 0">
+          <h3 style="font-size:20px;font-weight:800;color:#fff;margin-bottom:16px">24/7 Emergency Locksmith Service</h3>
+          <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;max-width:600px">Lock and key problems can happen at any time. Our emergency locksmith service is available day and night for urgent situations.</p>
+          <p style="font-size:14px;color:rgba(255,255,255,0.7);line-height:1.7;max-width:600px">We respond to car lockouts, house lockouts, business lockouts, lost keys, broken locks, and after-hours emergencies throughout Jacksonville, FL.</p>
+          <p style="color:var(--orange-light);font-size:14px;font-weight:700">Mobile Locksmith Jacksonville and Car Key Replacement provides fast emergency service when you need help most.</p>
+        </div>
+        
         <div class="emerg-services">
-          <div class="es-item" style="--before:'🚗'">Car Lockouts</div>
+          <div class="es-item">Car Lockouts</div>
           <div class="es-item">Lost Keys</div>
           <div class="es-item">House Lockouts</div>
           <div class="es-item">Broken Locks</div>
@@ -1200,7 +1559,7 @@
         <h3 style="font-size:26px;font-weight:800;color:var(--navy-deep);margin:10px 0 4px">Ready to Help Right Now</h3>
         <div class="phone-display">
           <span>📞</span>
-          <a href="tel:9047208253" style="color:var(--gold)">(904) 720-8253</a>
+          <a href="tel:9047208253" style="color:var(--orange)">(904) 720-8253</a>
         </div>
         <div class="emerg-info">
           <div class="ei"><span class="icon">⏱️</span> 20–40 minute response in most cases</div>
@@ -1261,7 +1620,7 @@
           <h3>Service Area</h3>
           <p>We provide mobile locksmith service across Jacksonville, FL and surrounding communities within a 60-mile radius. Whether you need car key replacement, emergency locksmith service, or lock repair, our team is ready to help.</p>
           <div style="margin-top:16px;padding:14px;background:rgba(245,166,35,0.06);border-radius:8px;border:1px solid rgba(245,166,35,0.15)">
-            <p style="font-size:13px;color:var(--gold);font-weight:700">📍 Service Address</p>
+            <p style="font-size:13px;color:var(--orange);font-weight:700">📍 Service Address</p>
             <p style="font-size:14px;color:var(--text2);margin-top:5px">11221 Stanley Steamer Ln<br>Jacksonville, FL 32246<br>Mobile service — 60 mile radius</p>
           </div>
           <div style="margin-top:14px">
@@ -1481,11 +1840,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="review-summary" style="max-width:400px">
-      <div class="big-rating" aria-label="5.0 rating">5.0</div>
-      <div class="stars" aria-label="5 star average rating">★★★★★</div>
-      <p>Average customer rating<br>Based on Jacksonville area reviews</p>
-    </div> -->
   </div>
 </section>
 
@@ -1611,6 +1965,7 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#home">Home</a></li>
+          <li><a href="#service-area">Service Area</a></li>
           <li><a href="#about">About Us</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#reviews">Reviews</a></li>
