@@ -1,0 +1,23 @@
+{
+  "name": "Car Key Locksmith Jacksonville",
+  "short_name": "CK Locksmith JAX",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F8FC",
+  "theme_color": "#0D1F3C",
+  "description": "Mobile locksmith service in Jacksonville, FL for car key replacement, lockouts, ignition repair, and more.",
+  "icons": [
+    {
+      "src": "/assets/images/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/logo.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
+    }
+  ]
+}
